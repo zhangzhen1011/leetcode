@@ -46,7 +46,6 @@ func partition(a []int, lo, hi int) int {
 	n := median3(a, lo, lo+(hi-lo+1)/2, hi)
 	a[lo], a[n] = a[n], a[lo]
 
-	//
 	i, j := lo, hi+1
 	v := a[lo]
 
@@ -67,17 +66,9 @@ func partition(a []int, lo, hi int) int {
 
 	for i < j {
 		a[i], a[j] = a[j], a[i]
-		for {
-			i++
-			if a[i] >= v { // 大于等于时终止， 触发swap
-				break
-			}
+		for i++; a[i] < v; i++ {
 		}
-		for {
-			j--
-			if v >= a[j] {
-				break
-			}
+		for j--; v < a[j]; j-- {
 		}
 	}
 	a[lo], a[j] = a[j], a[lo]
