@@ -7,6 +7,7 @@ package main
  *     Next *ListNode
  * }
  */
+// 链表拼接到一条上
 func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	if headA == nil || headB == nil {
 		return nil
