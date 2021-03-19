@@ -26,7 +26,7 @@ func (pq PriorityQueue) Len() int {
 
 func (pq *PriorityQueue) Push(x interface{}) {
 	item := x.(*Item)
-	*pq = append(*pq, item)
+	pq = append(pq, item)
 }
 
 func (pq *PriorityQueue) Pop() interface{} {

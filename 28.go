@@ -26,7 +26,7 @@ func strStr(haystack string, needle string) int {
 		} else { // 失配时，更新i
 			if i+nl < hl {
 				for j = nl - 1; j >= 0; j-- {
-					if haystack[i+nl] == needle[j] { //  从左到右，第一个匹配时
+					if haystack[i+nl] == needle[j] { //  从右到左，第一个匹配时
 						i += nl - j
 						break
 					}

@@ -1,11 +1,9 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 func main() {
-	s := "abc"
-	fmt.Println(reflect.TypeOf(s[:1]))
+	a := []int{1, 2, 3}
+	fmt.Println(a[3:])
+	fmt.Println(append(a[:1], a[2:]...), a)
 }
