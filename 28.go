@@ -12,10 +12,10 @@ func strStr(haystack string, needle string) int {
 		return -1
 	}
 
-	for i < hl-nl+1 {
+	for i < hl {
 		tmp := i
 		j := 0
-		for ; j < nl; j++ {
+		for ; j < nl && tmp < hl; j++ {
 			if haystack[tmp] != needle[j] {
 				break
 			}
@@ -43,5 +43,5 @@ func strStr(haystack string, needle string) int {
 }
 
 func main() {
-	fmt.Println(strStr("mississippi", "sippia"))
+	fmt.Println(strStr("mississippia", "sippia"))
 }
