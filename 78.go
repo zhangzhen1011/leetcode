@@ -64,3 +64,26 @@ func helper(nums []int, i int, path []int, result *[][]int) {
 		path = path[:len(path)-1]
 	}
 }
+
+// 方法3
+func subsets(nums []int) [][]int {
+	var result = [][]int{}
+	dfs(nums, 0, []int{}, &result, true)
+	return result
+}
+
+func dfs(nums []int, idx int, path []int, result *[][]int, diff bool) {
+	if diff {
+		tmp := make([]int, len(path))
+		copy(tmp, path)
+		*result = append(*result, tmp)
+	}
+	if idx == len(nums) {
+		return
+	}
+
+	// 选择idx位置
+	dfs(nums, idx+1, append(path, nums[idx]), result, true)
+	// 不选择idx位置
+	dfs(nums, idx+1, path, result, false)
+}
