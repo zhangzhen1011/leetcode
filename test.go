@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math"
-	"math/rand"
 	"strconv"
 	"strings"
 )
@@ -32,7 +31,6 @@ func convertToFraction(t string) (int, int) {
 }
 
 func main() {
-	fmt.Println(rand.Int())
-	fmt.Println(rand.Int())
-	fmt.Println(rand.Int())
+	s := "    1  2"
+	fmt.Println(len(strings.Split(s, " ")))
 }
