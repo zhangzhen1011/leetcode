@@ -5,6 +5,9 @@ import (
 	"math/rand"
 )
 
+// TODO, DEL操作
+// TODO, 允许重复key
+
 type node struct {
 	ch       [2]*node // 0,左，1右
 	priority int      // 堆优先级, 保持平衡
