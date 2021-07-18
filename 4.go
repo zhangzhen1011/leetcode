@@ -5,6 +5,7 @@ package main
 import "math"
 
 // 两个正序数组的中位数
+// 二分
 func findMedianSortedArrays(nums1, nums2 []int) float64 {
 	n1 := len(nums1)
 	n2 := len(nums2)
@@ -67,4 +68,29 @@ func min(a, b int) int {
 		return b
 	}
 	return a
+}
+
+// 第二种解法，一次遍历
+// 双指针 按顺序遍历
+func findMedianSortedArrays(nums1, nums2 []int) float64 {
+	n1 := len(nums1)
+	n2 := len(nums2)
+	var i, j = 0, 0
+	var cur int = -1e10
+	var prev int = -1e10
+	for e := 0; e <= (n1+n2)/2; e++ {
+		prev = cur
+		if (i < n1 && j >= n2) || (i < n1 && nums1[i] < nums2[j]) {
+			cur = nums1[i]
+			i++
+		} else {
+			cur = nums2[j]
+			j++
+		}
+	}
+	if (n1+n2)%2 == 0 {
+		return float64(prev+cur) / 2.0
+	} else {
+		return float64(cur)
+	}
 }

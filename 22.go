@@ -1,3 +1,4 @@
+// 括号生成
 func generateParenthesis(n int) []string {
 	var result = &[]string{}
 	helper(n, n, "", result)
@@ -25,3 +26,4 @@ func helper(l, r int, path string, result *[]string) {
 		}
 	}
 }
+

@@ -1,3 +1,5 @@
+import "sort"
+
 func merge(intervals [][]int) [][]int {
 	if len(intervals) == 0 {
 		return nil
@@ -61,4 +63,32 @@ func qSort(a [][]int, lo, hi int) {
 	p := partition(a, lo, hi)
 	qSort(a, lo, p-1)
 	qSort(a, p+1, hi)
+}
+
+// 0427, 重叠区间合并
+func merge(intervals [][]int) [][]int {
+	if len(intervals) == 0 {
+		return nil
+	}
+	sort.SliceStable(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] }) // 按start排序
+
+	var ret [][]int
+	var cur int = -1
+	for _, single := range intervals {
+		if cur == -1 {
+			ret = append(ret, single)
+		} else {
+			if single[0] <= cur {
+				if single[1] > ret[len(ret)-1][1] {
+					ret[len(ret)-1][1] = single[1]
+				}
+			} else {
+				ret = append(ret, single)
+			}
+		}
+
+		cur = ret[len(ret)-1][1]
+	}
+
+	return ret
 }

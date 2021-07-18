@@ -1,7 +1,8 @@
 import "sort"
 
+// 双指针
 func threeSum(nums []int) [][]int {
-	sort.Ints(nums)
+	sort.Ints(nums) // 一定要先排序
 	n := len(nums)
 	if n < 3 {
 		return nil
@@ -9,16 +10,16 @@ func threeSum(nums []int) [][]int {
 
 	var ret = make([][]int, 0)
 
-	for i := 0; i < n; i++ {
-		if i > 0 && nums[i] == nums[i-1] {
+	for i := 0; i < n; i++ { // 第一个
+		if i > 0 && nums[i] == nums[i-1] { // 确定过一个之后再略过重复项
 			continue
 		}
 		start, end := i+1, n-1
-		for ; start < n; start++ {
+		for ; start < n; start++ { // 第二个
 			if start > i+1 && nums[start] == nums[start-1] {
 				continue
 			}
-			for start < end && nums[start]+nums[i]+nums[end] > 0 {
+			for start < end && nums[start]+nums[i]+nums[end] > 0 { // 第三个
 				end--
 			}
 			if start == end {

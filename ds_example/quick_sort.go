@@ -5,6 +5,7 @@ import "fmt"
 func quickSort(nums []int, lo, hi int) {
 	if lo < hi {
 		j := partition(nums, lo, hi)
+		fmt.Println(j)
 		quickSort(nums, lo, j-1)
 		quickSort(nums, j+1, hi)
 	}
@@ -21,11 +22,11 @@ func partition(nums []int, lo, hi int) int {
 	}
 	// j == hi, anchor归位
 	nums[i+1], nums[hi] = nums[hi], nums[i+1] // i+1
-	return i
+	return i + 1
 }
 
 func main() {
-	a := []int{1, 2, 3, 5, -1, -1, 0}
+	a := []int{2, 0, 2, 1, 1, 0}
 	quickSort(a, 0, len(a)-1)
 	fmt.Println(a)
 }
